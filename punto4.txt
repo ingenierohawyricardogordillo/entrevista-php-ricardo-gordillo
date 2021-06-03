@@ -1,0 +1,15 @@
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                           Pregunta numero 4                                          //
+    //                                                                                                      //
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Obtener utilizando una consulta SQL el listado de personas y su nivel de educación para las
+personas que trabajan en departamentos en donde la suma de los sueldos de los empleados
+que los integran es superior a 250000. En el listado mostrar el apellido de la persona
+(lastname) y el nivel de educacional (description de la tabla educationlevel). Mostrar los
+resultados ordenados por apellido.
+
+SELECT appx_employee.lastname, appx_educationlevel.description FROM appx_employee 
+LEFT JOIN appx_educationlevel ON appx_employee.id=appx_educationlevel.id 
+LEFT JOIN appx_department ON appx_employee.department_id=appx_department.id 
+ORDER BY appx_employee.lastname WHERE SUM(appx_employee.salary) >250000;

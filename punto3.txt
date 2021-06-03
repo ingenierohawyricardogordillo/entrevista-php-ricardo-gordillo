@@ -1,0 +1,89 @@
+
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                           Pregunta numero 3                                          //
+    //                                                                                                      //
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Crear una base de datos llamada “prueba”, y crea las siguientes tablas.
+TABLAS:
+APPX_employee (id, firstname, lastname, department_id, salary, educationlevel_id)
+APPX_department (id, department_name, department_city)
+APPX_educationlevel (id, description)
+DEBE INSERTAR UNOS DATOS DE PRUEBA. 
+
+
+Primero creo la base de datos 
+
+    CREATE DATABASE prueba;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Luego creo las tablas con la siguiente sintaxis
+
+
+Tabla appx_employee
+
+CREATE TABLE `prueba`.`appx_employee` ( `id` INT NULL DEFAULT NULL , `firstname` VARCHAR(50) NOT NULL ,
+ `lastname` VARCHAR(50) NOT NULL , `department_id` INT NOT NULL , `salary` INT NOT NULL 
+ , `educationlevel_id` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
+
+Tabla appx_department
+
+ CREATE TABLE `prueba`.`appx_department` ( `id` INT NULL DEFAULT NULL , `department_name` VARCHAR(100) NOT NULL ,
+  `department_city` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;
+
+Tabla appx_educationlevel  
+
+CREATE TABLE `prueba`.`appx_educationlevel` ( `id` INT NULL DEFAULT NULL ,
+ `description` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ Creando llaves para las tablas y su respectiva relacion 
+
+ALTER TABLE `appx_employee` ADD PRIMARY KEY(`id`);
+
+ALTER TABLE `appx_employee` ADD INDEX(`department_id`);
+
+ALTER TABLE `appx_employee` ADD INDEX(`educationlevel_id`);
+
+
+ALTER TABLE `appx_department` ADD PRIMARY KEY(`id`);
+
+
+
+ALTER TABLE `appx_educationlevel` ADD PRIMARY KEY(`id`);
+
+
+
+
+Tambien se cambia un tipo de dato en la tabla de appx_employee
+
+
+ALTER TABLE `appx_employee` CHANGE `educationlevel_id` `educationlevel_id` INT NOT NULL;
+
+
+
+ /////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ Insertando valores en Tablas
+
+
+Tabla appx_department
+
+ INSERT INTO `appx_department` (`id`, `department_name`, `department_city`) 
+ VALUES ('1', 'Los Robles', 'Bogota'), ('2', 'Alamos', 'Bogota'), ('3', 'Greco', 'Bogota')
+
+
+
+Tabla appx_educationlevel 
+
+ INSERT INTO `appx_educationlevel` (`id`, `description`) VALUES ('1', 'Bachiller '), ('2', 'Tecnico'), ('3', 'Tecnologo'), ('4', 'Profesional')
+
+
+INSERT INTO `appx_employee` (`id`, `firstname`, `lastname`, `department_id`, `salary`, `educationlevel_id`)
+ VALUES ('1', 'Jose ', 'Alvarez', '1', '1000000', '3'),('2', 'Camila', 'Caleño', '2', '2500000', '4'), 
+ ('3', 'Laura ', 'Florez', '3', '900000', '1'),('5', 'Jenny', 'Ortiz', '2', '2500000', '4'),
+ ('6', 'Fredy', 'Mercury', '1', '5000000', '1');
+
